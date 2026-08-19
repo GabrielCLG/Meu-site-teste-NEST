@@ -92,6 +92,19 @@
             background: linear-gradient(to bottom right, #141414, #1a1a1a);
         }
 
+        /* Classes para a animação de scroll (Reveal On Scroll) */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Oculta scrollbar mas mantém funcionalidade */
         ::-webkit-scrollbar {
             width: 8px;
@@ -128,18 +141,18 @@
                     </a>
                 </div>
 
-                <!-- Mobile menu button -->
+                <!-- Mobile menu button minimalista com cantos arredondados -->
                 <div class="md:hidden flex items-center pr-2">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none flex flex-col justify-center items-center w-8 h-8 space-y-[5px] group">
-                        <span class="block w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-out origin-center" id="line1"></span>
-                        <span class="block w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-out" id="line2"></span>
-                        <span class="block w-6 h-[2px] bg-current rounded-full transition-all duration-300 ease-out origin-center" id="line3"></span>
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none flex flex-col justify-center items-center w-9 h-9 space-y-[5px] bg-nest-gray/50 border border-white/5 rounded-full transition-all duration-300 active:scale-95">
+                        <span class="block w-4 h-[2px] bg-current rounded-full transition-all duration-300 ease-out origin-center" id="line1"></span>
+                        <span class="block w-4 h-[2px] bg-current rounded-full transition-all duration-300 ease-out" id="line2"></span>
+                        <span class="block w-4 h-[2px] bg-current rounded-full transition-all duration-300 ease-out origin-center" id="line3"></span>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
+        <!-- Mobile Menu Panel com animação suave de descer -->
         <div id="mobile-menu" class="md:hidden absolute top-[calc(100%+0.5rem)] left-0 w-full bg-nest-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 ease-out origin-top opacity-0 invisible -translate-y-4">
             <div class="px-4 pt-2 pb-6 space-y-1">
                 <a href="#sobre" class="block px-3 py-4 text-base font-medium text-gray-300 hover:text-nest-brand-light border-b border-white/5">Sobre nós</a>
@@ -155,7 +168,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-[113px] pb-20 lg:pt-[177px] lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+    <section class="relative pt-[98px] pb-20 lg:pt-[162px] lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         <!-- Elementos decorativos de fundo (Luzes de estúdio) -->
         <div class="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-nest-brand-darker opacity-20 rounded-full blur-[120px] pointer-events-none"></div>
         <div class="absolute bottom-0 -left-1/4 w-[600px] h-[600px] bg-nest-brand-dark opacity-10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -169,7 +182,7 @@
                         <span class="text-xs font-medium tracking-wide uppercase text-gray-300">Agenda aberta para novos projetos</span>
                     </div>
                     
-                    <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1] mb-8 text-white">
+                    <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-8 text-white">
                         Ideias que ganham <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-nest-brand-light via-nest-brand to-nest-brand-darker italic">movimento.</span>
                     </h1>
@@ -178,7 +191,7 @@
                         Sua parceira estratégica em produção e pós-produção audiovisual. Transformamos narrativas em conteúdo de alto impacto para redes sociais.
                     </p>
                     
-                    <div class="flex flex-wrap gap-4">
+                    <div class="flex flex-wrap items-center gap-4">
                         <a href="#contato" class="inline-flex items-center justify-center gap-2 bg-nest-brand text-nest-black px-8 py-4 rounded-full text-base font-bold hover:bg-nest-brand-light transition-colors shadow-[0_0_20px_rgba(252,152,4,0.3)]">
                             Inicie seu projeto
                             <i class="ph-bold ph-arrow-right"></i>
@@ -189,17 +202,11 @@
                     </div>
                 </div>
 
-                <!-- Coluna Direita: Imagem -->
+                <!-- Coluna Direita: Imagem Inteira com Máscara de Transparência Suave -->
                 <div class="relative w-full flex justify-center lg:justify-end opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">
-                    <!-- Removido o bloqueio de proporção (aspect ratio) para usar a imagem inteira -->
                     <div class="relative w-full max-w-lg flex items-center justify-center">
-                        <!-- Máscara de transparência base (Apaga de baixo para cima - efeito maior) -->
-                        <div class="w-full" style="-webkit-mask-image: linear-gradient(to top, transparent 0%, black 45%); mask-image: linear-gradient(to top, transparent 0%, black 45%);">
-                            <!-- Máscara de transparência lateral (Da metade para baixo, com fade mais suave nas bordas) -->
-                            <div class="w-full" style="-webkit-mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 60%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);">
-                                <!-- Usando h-auto e object-contain para mostrar 100% da foto -->
-                                <img src="images/Equipe_Nest.png" alt="Equipe Nest Movv" class="w-full h-auto object-contain">
-                            </div>
+                        <div class="w-full" style="-webkit-mask-image: linear-gradient(to top, transparent 0%, black 35%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(to top, transparent 0%, black 35%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%); -webkit-mask-composite: source-in; mask-composite: intersect;">
+                            <img src="images/Equipe_Nest.png" alt="Equipe Nest Movv" class="w-full h-auto object-contain">
                         </div>
                     </div>
                 </div>
@@ -213,7 +220,7 @@
     </section>
 
     <!-- Serviços Section -->
-    <section id="servicos" class="py-24 bg-nest-dark">
+    <section id="servicos" class="py-24 bg-nest-dark reveal-on-scroll">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 md:mb-24 md:flex md:justify-between md:items-end">
                 <div class="max-w-2xl">
@@ -277,7 +284,7 @@
     </section>
 
     <!-- Portfolio Section (Mockup) -->
-    <section id="portfolio" class="py-24">
+    <section id="portfolio" class="py-24 reveal-on-scroll">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="font-display text-3xl md:text-5xl font-bold mb-4 text-white">Últimos Trabalhos</h2>
@@ -323,7 +330,7 @@
     </section>
 
     <!-- CTA / Footer -->
-    <footer id="contato" class="bg-nest-black border-t border-nest-gray pt-20 pb-10">
+    <footer id="contato" class="bg-nest-black border-t border-nest-gray pt-20 pb-10 reveal-on-scroll">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-gradient-to-br from-nest-dark to-black border border-nest-gray rounded-3xl p-8 md:p-16 text-center relative overflow-hidden mb-20">
                 <!-- Decorative elements -->
@@ -434,6 +441,26 @@
                 navbar.classList.remove('shadow-[0_8px_30px_rgb(0,0,0,0.5)]');
                 navbar.style.background = 'rgba(10, 10, 10, 0.6)';
             }
+        });
+
+        // Observer para as seções aparecerem deslizando suavemente ao rolar a página
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                    observer.unobserve(entry.target); // Anima apenas na primeira vez que aparece
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
